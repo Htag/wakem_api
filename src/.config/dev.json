@@ -6,7 +6,7 @@
     "SECRET_KEY": "06a4c153fd27af256816c38fedab75a9",
     "SQLALCHEMY_DATABASE_URI": "postgresql+psycopg2://admin_user:faVNeqG4S@15.237.104.70:5432/kraft_dev",
     "SQLALCHEMY_TRACK_MODIFICATIONS": false,
-    "TOKEN_EXPIRATION" : 120,
+    "JWT_ACCESS_TOKEN_EXPIRES" : 120,
     "HASH_VALUE" : "HS256",
     "_comment": "SQLALCHEMY_DATABASE_URI : sqlite:///database.db"
 }

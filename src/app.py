@@ -30,7 +30,7 @@ def register_views(_app):
 
 def create_app(env) -> Flask:
     app = Flask(__name__)
-    directory = basedir + os.sep + "config"
+    directory = basedir + os.sep + ".config"
     if env == 'dev':
         app.debug = True
         print("Using Development configuration file...")
