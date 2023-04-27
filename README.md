@@ -38,5 +38,6 @@ flask --app "src/app:create_app('local')" run
 - CREATE DATABASE wakem
 - docker run --name fs_instance -e POSTGRES_PASSWORD=faVNeqG4S?.w2$u -p 5432:5432 -v postgres-data:/var/lib/postgresql/data -d postgres:latest  \\ Example password and user
 - docker run 
+- 
 - python -m pip install PACKAGENAME --trusted-host=pypi.python.org --trusted-host=pypi.org --trusted-host=files.pythonhosted.org
 - [Lien vers le tutoriel jwt auth](https://www.bacancytechnology.com/blog/flask-jwt-authentication)

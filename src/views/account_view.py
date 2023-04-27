@@ -54,7 +54,7 @@ def login():
             if account.account_type.upper() == AccountType.RIDER.value.upper():
                 return make_response(
                     {"logged": True, "message": "Logged in", "status": "Access granted", "type": "rider",
-                     "verification_code": account.verification_code, "token": create_access_token(identity=account.id, expires_delta=Utils.TOKEN_EXPIRATION)}
+                     "verification_code": account.verification_code, "token": create_access_token(identity=account.id)}
                 )
             else:
                 return make_response(
@@ -63,11 +63,11 @@ def login():
                 )
         else:
             return make_response(
-                {"logged": False, "message": "Could not verify", "status": "Access deniede"}
+                {"logged": False, "message": "Could not verify", "status": "Access denied"}
             )
     except Exception as err:
         traceback.print_exc()
-        return make_response({"logged": False, "message": "Could not verify", "status": "Access denieder"}, 403)
+        return make_response({"logged": False, "message": "Could not verify", "status": "Access denied"}, 403)
 
 
 @account_view.route(BASE_URL + '/register', methods=["POST"])
@@ -89,15 +89,18 @@ def register():
                 }
             )
         else:
-            _licence = data["licence"]
+            _firstname = data["firstname"]
+            _lastname = data["lastname"]
+            _email = data["email"]
+            _licence = data["licence_id"]
             _licence_date = data["licence_date"]
             driver = accountService.create_driver(_firstname, _lastname, _email, _phone_number, _licence, _licence_date)
             return jsonify(
                 {
                     "logged": True,
-                    #"driver": driver.to_dict(),
-                    #"token": get_token(driver.id),
-                    #"verification_code": driver.account.verification_code
+                    "driver": driver.to_dict(),
+                    "token": create_access_token(identity=driver.id),
+                    "verification_code": driver.account.verification_code
                 }
             )
     except IntegrityError as ie:
@@ -105,7 +108,7 @@ def register():
             {
                 "logged": False,
                 "error": True,
-                "message": "This email is already registered."
+                "message": "This number or email is already registered."
             }
         )
     except Exception as e:

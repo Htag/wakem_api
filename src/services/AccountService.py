@@ -11,6 +11,7 @@ def create_rider(_firstname, _phone_number) -> Rider:
     account = Account.clone_from(firstname=_firstname, phone_number=_phone_number,
                                  account_type=AccountType.RIDER.value, balance=0, enabled=True)
     rider = Rider()
+    rider.enabled = False
     rider.account_id = account.id
     rider.account = account
     db.session.add(account, rider)
@@ -23,6 +24,8 @@ def create_driver(_firstname, _lastname, _email, _phone_number, license_id,
     account = Account(firstname=_firstname, phone_number=_phone_number,
                       account_type=AccountType.DRIVER.value)
     account.email = _email
+    account.lastname = _lastname
+    account.enabled = True
 
     driver = Driver(license_id, license_date)
     driver.account = account

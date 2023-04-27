@@ -1,13 +1,14 @@
 {
     "DEBUG": true,
-    "ENV": "local",
+    "ENV": "prod",
     "DEVELOPMENT": true,
     "PORT": 8000,
     "SECRET_KEY": "06a4c153fd27af256816c38fedab75a9",
-    "SQLALCHEMY_DATABASE_URI": "postgresql+psycopg2://postgres:holmes@localhost:5432/wakem",
+    "SQLALCHEMY_DATABASE_URI": "postgresql+psycopg2://admin_user:faVNeqG4S@172.17.0.3:5432/kraft_prod",
     "SQLALCHEMY_TRACK_MODIFICATIONS": false,
     "TOKEN_EXPIRATION" : 120,
     "HASH_VALUE" : "HS256",
     "JWT_SECRET_KEY": "06a4c153fd27af256816c38fedab75a9",
+    "JWT_ACCESS_TOKEN_EXPIRES": 3600,
     "_comment": "SQLALCHEMY_DATABASE_URI : sqlite:///database.db"
 }
